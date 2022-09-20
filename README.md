@@ -14,10 +14,25 @@ You can install the package via composer:
 composer require laraditz/google-sheets
 ```
 
+## Setup
+1. This api uses Authentication with Service Accounts. Follow the instructions to [Create a Service Account](docs/oauth-server.md#creating-a-service-account).
+2. Download the JSON credentials.
+3. By default the path to the credentials is at storage `app/credentials.json`. You can set your own path by overwrite the value through `GOOGLE_SHEETS_AUTH_CONFIG` env.
+4. There are also other `.env` value that you can overwrite to suites your need as below:-
+```
+GOOGLE_SHEETS_APP_NAME="Google Sheets"
+GOOGLE_SHEETS_ACCESS_TYPE=offline
+GOOGLE_SHEETS_AUTH_CONFIG="app/credentials.json"
+```
+
 ## Usage
 
 ```php
-// Usage description here
+$spreadsheetId = "XXxXXxXXXXXx_XXxXXxXXXXXx_XXxXXxXXXXXx"; // this will be your spreadsheet ID
+$range = "Sheet 1"; // here we use the name of the Sheet to get all the rows
+
+// read all the rows of given sheet, sheet will return a Collection and you may use any of Collection method such as all(), toArray(), etc
+$sheets = app('google-sheets')->spreadsheet($spreadsheetId)->sheet($range)->all();
 ```
 
 ### Testing
