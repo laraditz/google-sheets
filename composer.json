@@ -1,0 +1,54 @@
+{
+    "name": "laraditz/google-sheets",
+    "description": "Wrapper for Google Sheets API V4",
+    "keywords": [
+        "laraditz",
+        "google-sheets"
+    ],
+    "homepage": "https://github.com/laraditz/google-sheets",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Raditz Farhan",
+            "email": "raditzfarhan@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laraditz\\GoogleSheets\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Laraditz\\GoogleSheets\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Laraditz\\GoogleSheets\\GoogleSheetsServiceProvider"
+            ],
+            "aliases": {
+                "GoogleSheets": "Laraditz\\GoogleSheets\\GoogleSheetsFacade"
+            }
+        }
+    }
+}
